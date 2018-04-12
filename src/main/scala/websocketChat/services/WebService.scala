@@ -1,5 +1,7 @@
 package websocketChat.services
 
-trait WebService {
+import akka.http.scaladsl.server.Route
 
+trait WebService {
+  def route: Route
 }

@@ -1,13 +1,13 @@
-package chat
+package websocketChat
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.model.ws.{Message, TextMessage}
 import akka.http.scaladsl.server.Directives
 import akka.stream.ActorMaterializer
-import akka.stream.scaladsl.Flow
 
 import scala.io.StdIn
+
+import websocketChat.services.{MainService, EchoService, ChatService}
 
 object Server extends App {
 
@@ -19,21 +19,9 @@ object Server extends App {
   val interface = "localhost"
   val port = 8080
 
-  val route = get {
-    pathEndOrSingleSlash {
-      complete("Welcome to websocket server")
-    }
-  } ~
-  path("ws-echo") {
-    get {
-      handleWebSocketMessages(echoService)
-    }
-  }
-
-  val echoService: Flow[Message, Message, _] = Flow[Message].map {
-    case TextMessage.Strict(txt) => TextMessage("ECHO: " + txt)
-    case _ => TextMessage("Message type unsupported")
-  }
+  val route = MainService.route ~
+    EchoService.route ~
+    ChatService.route
 
   val binding = Http().bindAndHandle(route, interface, port)
   println(s"Server is now online at http://$interface:$port\nPress RETURN to stop...")

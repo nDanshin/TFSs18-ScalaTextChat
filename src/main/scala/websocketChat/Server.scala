@@ -6,8 +6,7 @@ import akka.http.scaladsl.server.Directives
 import akka.stream.ActorMaterializer
 
 import scala.io.StdIn
-
-import websocketChat.services.{MainService, EchoService, ChatService}
+import websocketChat.services.{ChatService, EchoService, MainService}
 
 object Server extends App {
 

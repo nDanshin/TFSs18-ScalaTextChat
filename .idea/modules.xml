@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scalatextchat.iml" filepath="$PROJECT_DIR$/.idea/modules/scalatextchat.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scalatextchat-build.iml" filepath="$PROJECT_DIR$/.idea/modules/scalatextchat-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tfss18-scalatextchat.iml" filepath="$PROJECT_DIR$/.idea/modules/tfss18-scalatextchat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tfss18-scalatextchat-build.iml" filepath="$PROJECT_DIR$/.idea/modules/tfss18-scalatextchat-build.iml" />
     </modules>
   </component>
 </project>

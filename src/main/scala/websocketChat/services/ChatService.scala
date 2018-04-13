@@ -8,11 +8,9 @@ import websocketChat.chat.ChatRooms
 
 object ChatService {
 
-  def route(implicit actorSystem: ActorSystem, materializer: Materializer): Route = path("chat") {
-    get {
-      parameters('chatId.as[Int], 'userName.as[String]) { (chatId, userName) =>
-        handleWebSocketMessages(ChatRooms.findOrCreate(chatId).websocketFlow(userName))
-      }
+  def route(implicit actorSystem: ActorSystem, materializer: Materializer): Route = pathPrefix("ws-chat" / IntNumber) { chatId =>
+    parameter('name) { userName =>
+      handleWebSocketMessages(ChatRooms.findOrCreate(chatId).websocketFlow(userName))
     }
   }
 

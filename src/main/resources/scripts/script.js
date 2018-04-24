@@ -1,4 +1,23 @@
 var userName = ""
+var roomId = ""
+
+$(document).ready(function(){
+
+    // rooms click handler
+    $("#rooms-list a").on('click', function(e) {
+        roomId = $(this).text();
+        $('#output').html("");
+        $('#room-name a').html("Room #" + roomId);
+        createWebSocket();
+    });
+
+    $("#input-message").keypress(function(e) {
+        if (e.which == 13) {
+            e.preventDefault();
+            sendMessage();
+        }
+    });
+});
 
 function fakeAuth() {
     $("#b-popup").show()
@@ -14,13 +33,11 @@ function chatMenu() {
     /*document.getElementById("chat-menu").classList.toggle("active")*/
 }
 
-
 window.onclick = function(event) {
     if (!event.target.matches('.chat-menu-btn')) {
         var dropdowns = this.document.getElementById("submenu");
         if (dropdowns.classList.contains('show')) {
             dropdowns.classList.remove("show")
-
         }
     }
 }

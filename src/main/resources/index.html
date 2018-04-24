@@ -18,7 +18,7 @@
                 <li><a href=#>About</a></li>
             </ul>
         </li>
-        <li class="room-name"><a href=#>Room#1</a></li>
+        <li class="room-name" id="room-name"><a href=#></a></li>
         <li class="sign-in"><a href=# onclick="fakeAuth()">Sign In</a></li>
     </ul>
 </header>
@@ -89,24 +89,7 @@
 
 <div class="columns">
     <div class="column rooms">
-        <ul>
-            <li class="room"><a href=#>123</a></li>
-            <li class="room"><a href=#>123</a></li>
-            <li class="room"><a href=#>123</a></li>
-            <li class="room"><a href=#>123</a></li>
-            <li class="room"><a href=#>123</a></li>
-            <li class="room"><a href=#>123</a></li>
-            <li class="room"><a href=#>123</a></li>
-            <li class="room"><a href=#>123</a></li>
-            <li class="room"><a href=#>123</a></li>
-            <li class="room"><a href=#>123</a></li>
-            <li class="room"><a href=#>123</a></li>
-            <li class="room"><a href=#>123</a></li>
-            <li class="room"><a href=#>123</a></li>
-            <li class="room"><a href=#>123</a></li>
-            <li class="room"><a href=#>123</a></li>
-            <li class="room"><a href=#>123</a></li>
-            <li class="room"><a href=#>123</a></li>
+        <ul id="rooms-list">
             <li class="room"><a href=#>123</a></li>
         </ul>
     </div>
@@ -114,11 +97,11 @@
     <div class="column  main-column">
        
         <div id="output" class="output">
-            <span>[Alice] Hello world</span>
+            <span>[User] Test message</span>
         </div>
         
         <form class="send-form">
-            <input class="input-message" type="text" name="message">
+            <input class="input-message" id="input-message" type="text" name="message" autocomplete="off">
             <button class="send-msg btn tinkoff-color" type="button" onclick="sendMessage()">SEND</button>
         </form>
         

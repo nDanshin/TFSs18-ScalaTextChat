@@ -8,7 +8,11 @@ libraryDependencies ++= {
   val akkaV       = "2.5.3"
   val akkaHttpV   = "10.0.9"
   val scalaTestV  = "3.0.1"
+  val slickVersion   = "3.2.1"
   Seq(
+    "mysql"                %     "mysql-connector-java"     %      "5.1.36",
+    "com.typesafe.slick"%% "slick"                % slickVersion,
+    "com.typesafe.slick"%% "slick-hikaricp"       % slickVersion,
     "com.typesafe.akka" %% "akka-actor" % akkaV,
     "com.typesafe.akka" %% "akka-stream" % akkaV,
     "com.typesafe.akka" %% "akka-testkit" % akkaV,

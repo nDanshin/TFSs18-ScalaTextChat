@@ -6,7 +6,7 @@ import akka.http.scaladsl.server.Directives
 import akka.stream.ActorMaterializer
 
 import scala.io.StdIn
-import websocketChat.services.{ChatService, EchoService, MainService}
+import websocketChat.services.{ChatService, EchoService, MainService, RoomHistory}
 
 object Server extends App {
 
@@ -20,7 +20,8 @@ object Server extends App {
 
   val route = MainService.route ~
     EchoService.route ~
-    ChatService.route
+    ChatService.route ~
+    RoomHistory.route
 
   val binding = Http().bindAndHandle(route, interface, port)
   println(s"Server is now online at http://$interface:$port\nPress RETURN to stop...")

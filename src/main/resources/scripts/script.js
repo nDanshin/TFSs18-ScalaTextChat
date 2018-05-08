@@ -3,6 +3,10 @@ var roomId = ""
 
 $(document).ready(function(){
 
+    $.post( "http://localhost:8080/history", function( data ) {
+      alert( "Data Loaded: " + data );
+    });
+
     // rooms click handler
     $("#rooms-list a").on('click', function(e) {
         roomId = $(this).text();

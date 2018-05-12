@@ -41,5 +41,6 @@
     <orderEntry type="library" name="sbt: com.zaxxer:HikariCP:2.5.1:jar" level="project" />
     <orderEntry type="library" name="sbt: org.slf4j:slf4j-api:1.7.21:jar" level="project" />
     <orderEntry type="library" name="sbt: mysql:mysql-connector-java:5.1.36:jar" level="project" />
+    <orderEntry type="library" name="scala-sdk-2.12.4" level="application" />
   </component>
 </module>

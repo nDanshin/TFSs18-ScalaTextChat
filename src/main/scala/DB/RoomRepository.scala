@@ -2,7 +2,7 @@
 package DB
 
 
-import Utils.{DBComponent, MySQLDBImpl}
+import Utils.{DBComponent, H2DBImpl, MySQLDBImpl}
 
 import scala.concurrent.Future
 
@@ -44,6 +44,6 @@ trait RoomTable { this: DBComponent =>
 }
 
 
-class RoomRepositoryImpl extends RoomRepository with MySQLDBImpl
+class RoomRepositoryImpl extends RoomRepository with H2DBImpl
 
 case class Room(name: String, id: Option[Int] = None)

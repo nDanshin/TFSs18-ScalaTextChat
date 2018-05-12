@@ -11,6 +11,7 @@ libraryDependencies ++= {
   val slickVersion   = "3.2.1"
   Seq(
     "mysql"                %     "mysql-connector-java"     %      "5.1.36",
+    "com.h2database"      % "h2"              % "1.4.185",
     "com.typesafe.slick"%% "slick"                % slickVersion,
     "com.typesafe.slick"%% "slick-hikaricp"       % slickVersion,
     "com.typesafe.akka" %% "akka-actor" % akkaV,
@@ -18,6 +19,7 @@ libraryDependencies ++= {
     "com.typesafe.akka" %% "akka-testkit" % akkaV,
     "com.typesafe.akka" %% "akka-http" % akkaHttpV,
     //"com.typesafe.akka" %% "akka-http-spray-json" % akkaHttpV,
+    "com.h2database"       % 	   "h2"                       %      "1.4.196",
     "com.typesafe.akka" %% "akka-http-testkit" % akkaHttpV,
     "org.java-websocket" % "Java-WebSocket" % "1.3.0"
     //"org.scalatest"     %% "scalatest" % scalaTestV % "test"

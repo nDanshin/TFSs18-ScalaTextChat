@@ -5,7 +5,7 @@ import slick.jdbc.MySQLProfile
 
 
 
-trait MySQLImpl extends DBComponent {
+trait MySQLImplTest extends DBComponent {
 
   val driver = MySQLProfile
 

@@ -1,25 +1,22 @@
 package Utils
 
-//import org.slf4j.LoggerFactory
+import org.slf4j.LoggerFactory
 
 
-/**
-  * Only for demo
-  */
 trait H2DBImpl extends DBComponent {
 
 
 
-  //val logger = LoggerFactory.getLogger(this.getClass)
+  val logger = LoggerFactory.getLogger(this.getClass)
 
-  val driver = slick.driver.H2Driver
+  val driver = slick.jdbc.H2Profile
 
   import driver.api._
 
 
   val h2Url ="jdbc:h2:tcp://localhost/~/bank"
   val db: Database = {
-   // logger.info("Creating test connection ..................................")
+    logger.info("Creating test connection ..................................")
     Database.forConfig("tpcdi")
 
   }

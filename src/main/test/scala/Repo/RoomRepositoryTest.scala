@@ -1,13 +1,14 @@
 package scala.Repo
 
 import DB.{Room, RoomRepository}
-import Repo.MySQLImpl
+import Repo.{H2DBTest}
+
 import org.scalatest.FunSuite
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.time.{Millis, Seconds, Span}
 
 
-class RoomRepositoryTest extends FunSuite with RoomRepository with MySQLImpl with ScalaFutures {
+class RoomRepositoryTest extends FunSuite with RoomRepository with H2DBTest with ScalaFutures {
 
   implicit val defaultPatience = PatienceConfig(timeout = Span(5, Seconds), interval = Span(500, Millis))
 

@@ -6,7 +6,9 @@ import akka.actor.{Actor, ActorRef}
 class ChatRoomActor(roomId: Int) extends Actor {
 
   var participants: Map[String, ActorRef] = Map.empty[String, ActorRef]
-  val roomRepositoryImpl = new RoomRepositoryImpl // создание  репозитория комнат
+
+// private val repositoryImpl: RoomRepositoryImpl = new RoomRepositoryImpl
+
 
   override def receive: Receive = {
     case UserJoined(name, actorRef) =>
@@ -21,8 +23,7 @@ class ChatRoomActor(roomId: Int) extends Actor {
 
     case msg: ChatMessage =>
       broadcast(msg)
-      // что нибудь типо такого, но мне кажется тут нужно не создавать комнату, а отправлять новые сообщения в уже созданную)
-      roomRepositoryImpl.createRoom(Room(roomId.toString, Some(roomId)))
+   //   repositoryImpl.createRoom(Room("SBidI"))
   }
 
   def broadcast(message: ChatMessage): Unit = participants.values.foreach(_ ! message)

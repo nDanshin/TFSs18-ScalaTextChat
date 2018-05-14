@@ -2,7 +2,7 @@
 package DB
 
 
-import Utils.{DBComponent, MySQLDBImpl}
+import Utils.{DBComponent, H2DBImpl, MySQLDBImpl}
 
 import scala.concurrent.Future
 
@@ -30,9 +30,9 @@ trait RoomTable { this: DBComponent =>
 
   import driver.api._
 
-  class RoomTable(tag: Tag) extends Table[Room](tag, "room") {
-    val id = column[Int]("id", O.PrimaryKey, O.AutoInc)
-    val text = column[String]("name")
+  class RoomTable(tag: Tag) extends Table[Room](tag, "ROOM") {
+    val id = column[Int]("ID", O.PrimaryKey, O.AutoInc)
+    val text = column[String]("NAME")
     def * = (text, id.?) <> (Room.tupled, Room.unapply)
 
   }
@@ -44,6 +44,6 @@ trait RoomTable { this: DBComponent =>
 }
 
 
-class RoomRepositoryImpl extends RoomRepository with MySQLDBImpl
+class RoomRepositoryImpl extends RoomRepository with H2DBImpl
 
 case class Room(name: String, id: Option[Int] = None)

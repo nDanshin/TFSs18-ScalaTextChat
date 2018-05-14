@@ -1,13 +1,22 @@
 package websocketChat.services
 
+import DB.RoomRepositoryImpl
 import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.server.Directives._
+import de.heikoseeberger.akkahttpjson4s.Json4sSupport
+import org.json4s.jackson.Serialization
+import org.json4s.{DefaultFormats, jackson}
 
-object RoomHistory {
+object RoomHistory extends Json4sSupport{
+  implicit val format: DefaultFormats.type = DefaultFormats
+  implicit val serialization: Serialization.type = jackson.Serialization
 
-  val map = Map(123 -> "123s", 5 -> "5s")
+    val roomRepositoryImpl = new RoomRepositoryImpl
 
-  def route: Route = pathPrefix("history" / IntNumber) { roomId =>
-    complete(map.getOrElse(roomId, "").toString)
+
+    def route: Route = pathPrefix("history" / IntNumber) { roomId =>
+      complete(roomRepositoryImpl.getRoomById(roomId))
+    }
   }
-}
+
+

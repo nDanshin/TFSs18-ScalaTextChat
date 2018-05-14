@@ -1,5 +1,6 @@
 package websocketChat
 
+import DB.{Room, RoomRepositoryImpl}
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.server.Directives

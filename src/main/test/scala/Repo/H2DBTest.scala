@@ -14,7 +14,7 @@ trait H2DBTest extends DBComponent {
   val driver = slick.jdbc.H2Profile
 
   import driver.api._
-  val h2Url = "jdbc:h2:mem:demo;MODE=MySql;DATABASE_TO_UPPER=false;INIT=runscript from 'src/test/resources/schema.sql'\\;runscript from 'src/test/resources/schemadata.sql'"
+  val h2Url = "jdbc:h2:mem:demo;MODE=MySql;INIT=runscript from 'src/test/resources/schema.sql'\\;runscript from 'src/test/resources/schemadata.sql'"
 
   val db: Database = {
     logger.info("Creating test connection ..................................")

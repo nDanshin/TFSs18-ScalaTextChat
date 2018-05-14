@@ -14,5 +14,6 @@
         <option name="sbtVersion" value="1.1.4" />
       </SbtProjectSettings>
     </option>
+    <option name="vmParameters" value="-mx512M" />
   </component>
 </project>

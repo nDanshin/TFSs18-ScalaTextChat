@@ -7,7 +7,7 @@ class ChatRoomActor(roomId: Int) extends Actor {
 
   var participants: Map[String, ActorRef] = Map.empty[String, ActorRef]
 
-// private val repositoryImpl: RoomRepositoryImpl = new RoomRepositoryImpl
+ private val repositoryImpl: RoomRepositoryImpl = new RoomRepositoryImpl
 
 
   override def receive: Receive = {
@@ -23,7 +23,9 @@ class ChatRoomActor(roomId: Int) extends Actor {
 
     case msg: ChatMessage =>
       broadcast(msg)
-   //   repositoryImpl.createRoom(Room("SBidI"))
+
+     //repositoryImpl.createRoom(Room(msg.toString))
+    repositoryImpl.updateRoom(Room(msg.toString))
   }
 
   def broadcast(message: ChatMessage): Unit = participants.values.foreach(_ ! message)

@@ -3,20 +3,31 @@ package DB
 
 
 import Utils.{DBComponent, H2DBImpl, MySQLDBImpl}
+import org.slf4j.LoggerFactory
 
 import scala.concurrent.Future
 
 
 trait RoomRepository extends RoomTable { this: DBComponent =>
-
   import driver.api._
 
 
   def createRoom(room: Room): Future[Int] = db.run { roomTableAutoInc += room }
 
-  def updateRoom(room: Room): Future[Int] = db.run { roomTableQuery.filter(_.id === room.id.get).update(room) }
+//  def updateRoom(room: Room): Future[Int] = db.run { roomTableQuery.filter(_.id === room.id.get).update(room) }
+def updateRoom(room: Room): Future[Int] = db.run {
+  sqlu"""
+       UPDATE room SET name = '#${room.name}'  where id='1'
+    """
+}
 
-  def getRoomById(id: Int): Future[Option[Room]] = db.run { roomTableQuery.filter(_.id === id).result.headOption }
+// update room set name =   (SELECT name FROM room WHERE id='2') || '#${room.name}' where id='5'
+
+//  def getRoomById(id: Int): Future[Option[Room]] = db.run { roomTableQuery.filter(_.id === id).result.headOption }
+def getRoomById(id: Int) = db.run {
+  sql"SELECT name FROM room WHERE id = #$id"
+    .as[(String)].headOption
+}
 
   // def getAllBanks(): Future[List[Room]] = db.run { roomTableQuery.to[List].result }
 

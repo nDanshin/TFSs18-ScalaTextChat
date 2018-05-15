@@ -1,9 +1,13 @@
+import com.typesafe.sbt.packager.MappingsHelper._
+import com.typesafe.sbt.packager.archetypes.JavaAppPackaging
+
+enablePlugins(JavaAppPackaging)
+
 name := "scala-chat-project"
 
 addCommandAlias("mgm", "migration_manager/run")
 
 addCommandAlias("mg", "migrations/run")
-
 
 lazy val slickVersion = "3.2.1"
 
@@ -75,4 +79,30 @@ lazy val tools = Project("git-tools",
 lazy val generatedCode = Project("generate_code",
   file("generated_code")).settings(commonSettings:_*).settings {
   libraryDependencies ++= slickDependencies
+}
+
+lazy val tutorial = Project("packager", file("."))
+  .aggregate(app, migrations, migrationManager, generatedCode, tools)
+  .dependsOn(app)
+  .settings(commonSettings:_*)
+  .settings(mainClass in Compile := Some("Application"))
+
+// -- mappings for the database migrations --
+mappings in Universal ++= contentOf(baseDirectory.value / "migrations").map {
+  case (file, dest) => file -> s"db/migrations/$dest"
+}
+mappings in Universal ++= contentOf(baseDirectory.value / "migration_manager").map {
+  case (file, dest) => file -> s"db/migration_manager/$dest"
+}
+mappings in Universal ++= contentOf(baseDirectory.value / "generated_code").map {
+  case (file, dest) => file -> s"db/generated_code/$dest"
+}
+mappings in Universal ++= contentOf(baseDirectory.value / "project").map {
+  case (file, dest) => file -> s"db/project/$dest"
+}
+mappings in Universal ++= contentOf(baseDirectory.value / "app" / "src" / "main" / "resources").map {
+  case (file, dest) => file -> s"db/app/src/main/resources/$dest"
+}
+mappings in Universal += {
+  ((baseDirectory in Compile).value / "build.sbt") -> "db/build.sbt"
 }

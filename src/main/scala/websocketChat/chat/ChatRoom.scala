@@ -6,7 +6,6 @@ import akka.stream.{FlowShape, OverflowStrategy}
 import akka.stream.scaladsl._
 
 class ChatRoom(roomId: Int, actorSystem: ActorSystem) {
-  //println("created room")
 
   private[this] val chatRoomActor = actorSystem.actorOf(Props(classOf[ChatRoomActor], roomId))
 

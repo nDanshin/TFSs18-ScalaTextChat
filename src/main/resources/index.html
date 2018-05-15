@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <title>Scala School Chat</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="scripts/script.js"></script>
+    <script src="scripts/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/index.css">
+<body>
+
+<header>
+    <ul class="menu" tabindex="0">
+        <li class="chat-menu"><a id="chat-menu" class="chat-menu-btn" href=# onclick="chatMenu()">Scala School Chat</a>
+            <ul id="submenu" class="submenu">
+                <li><a href=# data-toggle="modal" data-target="#newRoomModal">New Room</a></li>
+                <li><a href=# data-toggle="modal" data-target="#contactsModal">Contacts</a></li>
+                <li><a href=# data-toggle="modal" data-target="#aboutModal">About</a></li>
+            </ul>
+        </li>
+        <li class="room-name" id="room-name"><a href=#></a></li>
+        <li class="sign-in"><a href=# onclick="fakeAuth()">Sign In</a></li>
+    </ul>
+</header>
+
+<div id="b-popup" class="b-popup">
+    <div class="b-popup-content">
+            <form class="auth">
+                    <label for="username">Username:</label><input id="uname" type="text" name="username" class="placeholder" placeholder="admin@example.com">
+                    <label for="password">Password:</label><input type="password" name="password" class="placeholder" placeholder="Сложный пароль...">
+                    <button class="sign-in-btn tinkoff-color btn" type="button" onclick="fakeLogin()">
+                        Sign In
+                    </button>
+            </form>
+    </div>
+</div>
+
+<div class="modal" id="aboutModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header tinkoff-color">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h5 class="modal-title">About</h5>
+            </div>
+            <div class="modal-body">
+    
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="newRoomModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header tinkoff-color">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h5 class="modal-title">New Room</h5>
+            </div>
+            <div class="modal-body">
+                <p>friend1</p>
+                <p>friend1</p>
+                <p>friend1</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn tinkoff-color">New Room</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="contactsModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header tinkoff-color">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h5 class="modal-title">Contacts</h5>
+            </div>
+            <div class="modal-body">
+                <p>friend1</p>
+                <p>friend1</p>
+                <p>friend1</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn tinkoff-color">New Contact</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="columns">
+    <div class="column rooms">
+        <ul id="rooms-list">
+            <li class="room"><a href=#>123</a></li>
+        </ul>
+    </div>
+
+    <div class="column  main-column">
+       
+        <div id="output" class="output">
+            <span>[User] Test message</span>
+        </div>
+        
+        <form class="send-form">
+            <input class="input-message" id="input-message" type="text" name="message" autocomplete="off">
+            <button class="send-msg btn tinkoff-color" type="button" onclick="sendMessage()">SEND</button>
+        </form>
+        
+    </div>
+</div>
+
+</body>
+</html>

@@ -26,7 +26,7 @@
   }
 
   function onMessage(evt)
-  {
+  {var preRoom = document.createElement
     writeToScreen('<span>'+ evt.data + '</span>');
   }
 

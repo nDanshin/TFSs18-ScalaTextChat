@@ -8,7 +8,7 @@ $(document).ready(function(){
     });
 
     // rooms click handler
-    $("#rooms-list a").on('click', function(e) {
+    $(document).on('click', '.room-link', function(e) {
         roomId = $(this).text();
         $('#output').html("");
         $('#room-name a').html("Room #" + roomId);
@@ -22,6 +22,15 @@ $(document).ready(function(){
         }
     });
 });
+
+function makeNewRoom() {
+    var newRoomId = document.getElementById("new-id").value
+    $.post( "http://localhost:8080/create/" + newRoomId);
+    var preRoom = document.createElement('li');
+    preRoom.className = 'room';
+    preRoom.innerHTML = '<a class="room-link" href=#>' + newRoomId + '</a></li>';
+    document.getElementById("rooms-list").appendChild(preRoom);
+}
 
 function fakeAuth() {
     $("#b-popup").show()

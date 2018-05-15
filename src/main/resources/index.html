@@ -27,7 +27,7 @@
     <div class="b-popup-content">
             <form class="auth">
                     <label for="username">Username:</label><input id="uname" type="text" name="username" class="placeholder" placeholder="admin@example.com">
-                    <label for="password">Password:</label><input type="password" name="password" class="placeholder" placeholder="Сложный пароль...">
+                    <label for="password">Password:</label><input type="password" name="password" class="placeholder" placeholder="">
                     <button class="sign-in-btn tinkoff-color btn" type="button" onclick="fakeLogin()">
                         Sign In
                     </button>
@@ -57,12 +57,12 @@
                 <h5 class="modal-title">New Room</h5>
             </div>
             <div class="modal-body">
-                <p>friend1</p>
-                <p>friend1</p>
-                <p>friend1</p>
+                <form class="new-room-form">
+                    <label >Input new room id<input id="new-id" type="text" class="placeholder"></label>
+                </form>
             </div>
             <div class="modal-footer">
-                <button class="btn tinkoff-color">New Room</button>
+                <button class="btn tinkoff-color" onclick="makeNewRoom()">New Room</button>
             </div>
         </div>
     </div>
@@ -90,7 +90,8 @@
 <div class="columns">
     <div class="column rooms">
         <ul id="rooms-list">
-            <li class="room"><a href=#>123</a></li>
+            <li class="room"><a class="room-link" href=#>123</a></li>
+            <li class="room"><a class="room-link" href=#>100</a></li>
         </ul>
     </div>
 

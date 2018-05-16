@@ -1,7 +1,9 @@
-import slick.backend.DatabaseConfig
-import slick.driver.JdbcProfile
+package DB
 
-object MyDatabase {
+import slick.basic.DatabaseConfig
+import slick.jdbc.JdbcProfile
+
+trait Db {
   lazy val config = DatabaseConfig.forConfig[JdbcProfile]("slick")
   lazy val db = config.db
 }

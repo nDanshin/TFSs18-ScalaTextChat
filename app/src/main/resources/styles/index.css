@@ -1,0 +1,221 @@
+html {
+    background: #ddd;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0 auto;
+    max-width: 1024px;
+    height: 100vh;
+    /*max-height: 100vh;*/
+    background: white;
+}
+
+.columns {
+    display: flex;
+    height: calc(100% - 50px);
+}
+.column {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid grey
+}
+.main-column {
+    flex: 5;
+    border-right: 1px solid grey;
+}
+/* ------------navigation bar ------------------*/
+.menu {
+    border: 1px solid black;
+    height: 44px;
+    display: flex;
+    list-style: none;
+    background-color: rgb(255, 221, 45);
+    margin: 0;
+    padding: 0;
+}
+
+.submenu {
+    flex:2;
+    list-style: none;
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    padding: 0;
+    background-color: white;
+    border: 1px solid black;
+    margin-left: -1;
+    width: calc(100% + 1px); 
+}
+
+.menu a {
+    text-decoration: none;
+    padding:.8rem 1rem;
+    display: block;
+    color: black;
+    height: 100%;
+}
+
+.menu > li a:hover {
+    /*background-color:rgb(255, 199, 45);*/
+    background-color: black;
+    color: rgb(255, 221, 45);
+}
+
+.chat-menu {
+    flex: 6;
+    position: relative;
+    text-align: center;
+}
+.room-name {
+    flex: 13;
+}
+.sign-in {
+    flex: 2;
+    text-align: center;
+}
+
+.active, #chat-menu:focus {
+    color: rgb(255, 221, 45) !important;
+    background-color: black;
+}
+.show { /* show submenu*/
+    display: flex;
+}
+
+
+/* Message storage output */
+.output {
+    height: 100%;
+    padding: 10px;
+    overflow-y: scroll;
+}
+
+/* Message sending form*/
+.send-form {
+    display: inline-flex;
+    padding: 10px;
+    position: relative;
+    min-height: 30px;
+    border-top: 1px solid grey;
+}
+.send-form .input-message {
+    width: 100%;
+}
+
+/*-----------rooms------*/
+.rooms {
+    overflow-y: scroll;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+
+}
+
+.rooms ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.rooms a {
+    text-decoration: none;
+    padding:.8rem 1rem;
+    display: block;
+    color: black;
+    border-bottom: 1px solid grey;
+}
+
+.rooms a:hover {
+    background-color: lightgrey;
+}
+
+.rooms li {
+    width: 100%;
+}
+
+/******************** popup **************************/
+.b-popup {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    background-color: rgb(0, 0, 0, .8);
+    z-index: 100;
+}
+
+.b-popup .b-popup-content {
+    width: 250px;
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 0px 0px 10px #000;
+    padding: 10px;
+    position: fixed;
+    left: 40%;
+    top: 35%;
+    z-index: 101;
+}
+
+.auth input, .sign-in-btn {
+    width: 98%;
+}
+
+.tinkoff-color {
+    background-color: rgb(255, 221, 45);
+    color: black;
+}
+/*************************************************************/
+.modal-dialog {
+    height: 90%;
+    max-width: 450px;
+    padding: 0;
+}
+
+.modal-content {
+    height: 100%;
+
+}
+
+.modal-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%
+}
+
+.modal-wide .modal-body {
+    overflow-x: scroll;
+}
+
+.modal {
+    margin-top: 20px;
+}
+
+/*************************************************************/
+::-webkit-scrollbar{
+    width:10px;
+}
+.rooms::-webkit-scrollbar{
+    width:4px;
+} 
+::-webkit-scrollbar-thumb{
+    border-width:1px 1px 1px 2px;
+    border-color: #777;
+    background-color: #ccc;
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover{
+    border-width: 1px 1px 1px 2px;
+    border-color: #555;
+    background-color: #777;
+}
+::-webkit-scrollbar-track{
+    border-width:0;
+}
+::-webkit-scrollbar-track:hover{
+    border-left: solid 1px #aaa;
+    background-color: #eee;
+}

@@ -13,6 +13,12 @@ lazy val slickVersion = "3.2.1"
 
 lazy val forkliftVersion = "0.3.0"
 
+lazy val akkaVersion = "2.5.3"
+
+lazy val akkaHttpVersion = "10.0.9"
+
+lazy val scalaTestVersion = "3.0.4"
+
 lazy val commonSettings = Seq(
   version := "1.0",
   scalaVersion := "2.12.3",
@@ -21,6 +27,12 @@ lazy val commonSettings = Seq(
   resolvers ++= Seq(
     Resolver.bintrayRepo("naftoligug", "maven"),
     Resolver.sonatypeRepo("snapshots"))
+)
+lazy val akkaDependencies = List(
+  "com.typesafe.akka" %% "akka-actor" % akkaVersion,
+  "com.typesafe.akka" %% "akka-stream" % akkaVersion,
+  "com.typesafe.akka" %% "akka-http" % akkaHttpVersion,
+  "com.typesafe.akka" %% "akka-http-testkit" % akkaHttpVersion
 )
 
 lazy val loggingDependencies = List(
@@ -41,7 +53,7 @@ lazy val forkliftDependencies = List(
   ,"io.github.nafg" %% "slick-migration-api" % "0.4.1"
 )
 
-lazy val appDependencies = dbDependencies ++ loggingDependencies
+lazy val appDependencies = dbDependencies ++ loggingDependencies ++ akkaDependencies
 
 lazy val migrationsDependencies =
   dbDependencies ++ forkliftDependencies ++ loggingDependencies
@@ -85,7 +97,7 @@ lazy val tutorial = Project("packager", file("."))
   .aggregate(app, migrations, migrationManager, generatedCode, tools)
   .dependsOn(app)
   .settings(commonSettings:_*)
-  .settings(mainClass in Compile := Some("Application"))
+  .settings(mainClass in Compile := Some("Server"))
 
 // -- mappings for the database migrations --
 mappings in Universal ++= contentOf(baseDirectory.value / "migrations").map {

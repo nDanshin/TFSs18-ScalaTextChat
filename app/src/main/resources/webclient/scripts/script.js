@@ -3,15 +3,16 @@ var roomId = ""
 
 $(document).ready(function(){
 
-    $.post( "http://localhost:8080/history", function( data ) {
-      alert( "Data Loaded: " + data );
-    });
-
     // rooms click handler
     $(document).on('click', '.room-link', function(e) {
         roomId = $(this).text();
         $('#output').html("");
         $('#room-name a').html("Room #" + roomId);
+        $.post( "http://localhost:8080/history/" + roomId, function( data ) {
+            data.forEach(function(element) {
+                writeToScreen(element);
+            });
+        });
         createWebSocket();
     });
 
@@ -25,7 +26,6 @@ $(document).ready(function(){
 
 function makeNewRoom() {
     var newRoomId = document.getElementById("new-id").value
-    $.post( "http://localhost:8080/create/" + newRoomId);
     var preRoom = document.createElement('li');
     preRoom.className = 'room';
     preRoom.innerHTML = '<a class="room-link" href=#>' + newRoomId + '</a></li>';

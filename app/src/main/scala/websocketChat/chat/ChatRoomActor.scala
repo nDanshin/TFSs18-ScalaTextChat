@@ -3,6 +3,9 @@ package websocketChat.chat
 import DB.MessagesRepository
 import akka.actor.{Actor, ActorRef}
 
+import scala.concurrent.Await
+import scala.concurrent.duration.Duration
+
 class ChatRoomActor(roomId: Int) extends Actor {
 
   var participants: Map[String, ActorRef] = Map.empty[String, ActorRef]
@@ -23,6 +26,7 @@ class ChatRoomActor(roomId: Int) extends Actor {
 
     case msg: ChatMessage => {
       val text = s"[${msg.sender}]: ${msg.text}"
+      //Await.result(messagesRepository.insertMessage(roomId, text), Duration.Inf)
       messagesRepository.insertMessage(roomId, text)
       broadcast(msg)
     }

@@ -19,6 +19,8 @@ lazy val akkaHttpVersion = "10.0.9"
 
 lazy val scalaTestVersion = "3.0.4"
 
+lazy val circeVersion = "0.9.3"
+
 lazy val commonSettings = Seq(
   version := "1.0",
   scalaVersion := "2.12.3",
@@ -28,6 +30,18 @@ lazy val commonSettings = Seq(
     Resolver.bintrayRepo("naftoligug", "maven"),
     Resolver.sonatypeRepo("snapshots"))
 )
+
+lazy val jsonDependencies  = List(
+  "de.heikoseeberger" %% "akka-http-json4s" % "1.20.1",
+  "org.json4s" %% "json4s-jackson" % "3.5.3",
+)
+
+lazy val circeDependencies = List(
+  "io.circe" %% "circe-core",
+  "io.circe" %% "circe-generic",
+  "io.circe" %% "circe-parser"
+).map(_ % circeVersion)
+
 lazy val akkaDependencies = List(
   "com.typesafe.akka" %% "akka-actor" % akkaVersion,
   "com.typesafe.akka" %% "akka-stream" % akkaVersion,
@@ -53,7 +67,7 @@ lazy val forkliftDependencies = List(
   ,"io.github.nafg" %% "slick-migration-api" % "0.4.1"
 )
 
-lazy val appDependencies = dbDependencies ++ loggingDependencies ++ akkaDependencies
+lazy val appDependencies = dbDependencies ++ loggingDependencies ++ akkaDependencies ++ circeDependencies ++ jsonDependencies
 
 lazy val migrationsDependencies =
   dbDependencies ++ forkliftDependencies ++ loggingDependencies

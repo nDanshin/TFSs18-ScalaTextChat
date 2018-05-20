@@ -1,1 +1,0 @@
-CREATE TABLE ROOM(ID int PRIMARY KEY auto_increment,NAME varchar(200));

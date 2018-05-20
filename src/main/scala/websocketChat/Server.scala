@@ -19,6 +19,7 @@ object Server extends App {
   val interface = "localhost"
   val port = 8080
 
+ // val route = Controller.route
   val route = MainService.route ~
     EchoService.route ~
     ChatService.route ~

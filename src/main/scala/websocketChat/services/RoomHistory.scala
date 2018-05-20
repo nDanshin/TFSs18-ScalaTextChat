@@ -7,7 +7,7 @@ import de.heikoseeberger.akkahttpjson4s.Json4sSupport
 import org.json4s.jackson.Serialization
 import org.json4s.{DefaultFormats, jackson}
 
-object RoomHistory extends Json4sSupport{
+object RoomHistory  {
   implicit val format: DefaultFormats.type = DefaultFormats
   implicit val serialization: Serialization.type = jackson.Serialization
 

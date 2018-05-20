@@ -2,8 +2,12 @@ package websocketChat.chat
 
 import akka.actor.ActorSystem
 
-object ChatRooms {
-  var chatRooms: Map[Int, ChatRoom] = Map.empty[Int, ChatRoom]
+import scala.collection.concurrent.TrieMap
+
+class ChatRooms {
+  //var chatRooms: Map[Int, ChatRoom] = Map.empty[Int, ChatRoom]
+  // var chatRooms=scala.collection.mutable.Map.empty[Int, ChatRoom]
+  var chatRooms: TrieMap[Int, ChatRoom] = TrieMap.empty[Int, ChatRoom]
 
   def findOrCreate(number: Int)(implicit actorSystem: ActorSystem): ChatRoom =
     chatRooms.getOrElse(number, createNewChatRoom(number))

@@ -1,4 +1,5 @@
   var wsUri = "ws://localhost:8080/ws-chat/";
+  var websocket;
 
   function init()
   {
@@ -14,15 +15,9 @@
     websocket.onerror = function(evt) { onError(evt) };
   }
 
-/*
-  function onOpen(evt)
-  {
-    doSend("WebSocket hello");
-  }*/
-
   function onClose(evt)
   {
-    writeToScreen("<span>DISCONNECTED</span>");
+    //writeToScreen("<span>DISCONNECTED</span>");
   }
 
   function onMessage(evt)
@@ -32,7 +27,7 @@
 
   function onError(evt)
   {
-    //writeToScreen('<span style="color: red;">[System] ERROR:</span>' + evt.data);
+    writeToScreen('<span style="color: red;">[System] ERROR:</span>' + evt.data);
   }
 
   function sendMessage()
@@ -49,6 +44,12 @@
     pre.style.wordWrap = "break-word";
     pre.innerHTML = message;
     output.appendChild(pre);
+  }
+
+  function closeWebSocket()
+  {
+    if (typeof websocket != 'undefined')
+        if (websocket.readyState === WebSocket.OPEN) websocket.close();
   }
 
   window.addEventListener("load", init, false);

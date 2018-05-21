@@ -5,6 +5,7 @@ $(document).ready(function(){
 
     // rooms click handler
     $(document).on('click', '.room-link', function(e) {
+        closeWebSocket();
         roomId = $(this).text();
         $('#output').html("");
         $('#room-name a').html("Room #" + roomId);

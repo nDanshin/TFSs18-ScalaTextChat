@@ -8,10 +8,9 @@ import scala.concurrent.duration.Duration
 
 class ChatRoomActor(roomId: Int) extends Actor {
 
-  var participants: Map[String, ActorRef] = Map.empty[String, ActorRef]
+  val participants = scala.collection.mutable.Map[String, ActorRef]()
 
- private val messagesRepository = new MessagesRepository
-
+  private val messagesRepository = new MessagesRepository
 
   override def receive: Receive = {
     case UserJoined(name, actorRef) =>
@@ -26,11 +25,9 @@ class ChatRoomActor(roomId: Int) extends Actor {
 
     case msg: ChatMessage => {
       val text = s"[${msg.sender}]: ${msg.text}"
-      //Await.result(messagesRepository.insertMessage(roomId, text), Duration.Inf)
       messagesRepository.insertMessage(roomId, text)
       broadcast(msg)
     }
-
 
   }
 

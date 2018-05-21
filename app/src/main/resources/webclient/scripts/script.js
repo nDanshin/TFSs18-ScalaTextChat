@@ -1,5 +1,6 @@
-var userName = ""
-var roomId = ""
+var userName = "";
+var roomId = "";
+var ADDRESS = "localhost:8085";
 
 $(document).ready(function(){
 
@@ -9,7 +10,7 @@ $(document).ready(function(){
         roomId = $(this).text();
         $('#output').html("");
         $('#room-name a').html("Room #" + roomId);
-        $.post( "http://localhost:8080/history/" + roomId, function( data ) {
+        $.post( "http://" + ADDRESS + "/history/" + roomId, function( data ) {
             data.forEach(function(element) {
                 writeToScreen(element);
             });
@@ -34,12 +35,13 @@ function makeNewRoom() {
 }
 
 function fakeAuth() {
-    $("#b-popup").show()
+    closeWebSocket();
+    $("#b-popup").show();
 }
 
 function fakeLogin() {
     userName = document.getElementById("uname").value;
-    $("#b-popup").hide()
+    $("#b-popup").hide();
 }
 
 function chatMenu() {

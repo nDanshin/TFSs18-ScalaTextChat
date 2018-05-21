@@ -17,7 +17,7 @@ Server extends App {
   val controller = new HttpController
 
   val interface = "0.0.0.0"
-  val port = 8080
+  val port = 8085
 
 
   val binding = Http().bindAndHandle(controller.routes, interface, port)

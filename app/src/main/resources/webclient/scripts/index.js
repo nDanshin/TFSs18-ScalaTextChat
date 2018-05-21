@@ -1,4 +1,4 @@
-  var wsUri = "ws://localhost:8080/ws-chat/";
+  var wsUri = "ws://" + ADDRESS + "/ws-chat/";
   var websocket;
 
   function init()
@@ -17,7 +17,7 @@
 
   function onClose(evt)
   {
-    //writeToScreen("<span>DISCONNECTED</span>");
+    writeToScreen("<span>DISCONNECTED</span>");
   }
 
   function onMessage(evt)

@@ -111,7 +111,7 @@ lazy val tutorial = Project("packager", file("."))
   .aggregate(app, migrations, migrationManager, generatedCode, tools)
   .dependsOn(app)
   .settings(commonSettings:_*)
-  .settings(mainClass in Compile := Some("Server"))
+  .settings(mainClass in Compile := Some("websocketChat.Server"))
 
 // -- mappings for the database migrations --
 mappings in Universal ++= contentOf(baseDirectory.value / "migrations").map {

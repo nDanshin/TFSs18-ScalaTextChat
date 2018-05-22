@@ -1,6 +1,6 @@
 var userName = "";
 var roomId = "";
-var ADDRESS = "localhost:8085";
+var ADDRESS = "195.154.80.20:8085";
 
 $(document).ready(function(){
 
